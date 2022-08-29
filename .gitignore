@@ -1,6 +1,7 @@
 ## VS Code IDE
 .vscode
 .code-workspace
+eclipse-formatter.xml
 
 *.class
 *.jar
