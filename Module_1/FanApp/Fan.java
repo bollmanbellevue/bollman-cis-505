@@ -6,6 +6,9 @@
     Liang, Y.D. (2019). Introduction to Java Programming and Data Structures:
      Comprehensive Version (12th ed.). Pearson Education, Inc.
     Modified by J. Bollman 2022
+
+    Payne, D. (2021). CSD 405 Intermediate Java Programming. Bellevue University.
+    Modified by J. Bollman 2022
  */
 package FanApp;
 
@@ -38,7 +41,7 @@ public class Fan {
      * Get the Fan property speed.
      * @return int
      */
-    int getSpeed() {
+    public int getSpeed() {
         return speed;
     };
 
@@ -46,7 +49,7 @@ public class Fan {
      * Set the Fan speed.
      * @param speed
      */
-    void setSpeed(int speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     };
 
@@ -54,7 +57,7 @@ public class Fan {
      * Get the Fan property on.
      * @return boolean
      */
-    boolean getOn() {
+    public boolean getOn() {
         return on;
     };
 
@@ -62,7 +65,7 @@ public class Fan {
      * Set the Fan active state, on.
      * @param on
      */
-    void setOn(boolean on) {
+    public void setOn(boolean on) {
         this.on = on;
     };
 
@@ -70,7 +73,7 @@ public class Fan {
      * Get the Fan property radius.
      * @return double
      */
-    double getRadius() {
+    public double getRadius() {
         return radius;
     };
 
@@ -78,7 +81,7 @@ public class Fan {
      * Set the Fan radius.
      * @param radius
      */
-    void setRadius(double radius) {
+    public void setRadius(double radius) {
         this.radius = radius;
     };
 
@@ -86,7 +89,7 @@ public class Fan {
      * Get the Fan property color.
      * @return String
      */
-    String getColor() {
+    public String getColor() {
         return color;
     };
 
@@ -94,7 +97,7 @@ public class Fan {
      * Set the Fan color.
      * @param color
      */
-    void setColor(String color) {
+    public void setColor(String color) {
         this.color = color;
     };
 
