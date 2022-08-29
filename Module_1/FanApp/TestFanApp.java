@@ -12,12 +12,12 @@ package FanApp;
 public class TestFanApp {
     public static void main(String[] args) {
         // Instantiating a default Fan object.
-        Fan defaultFan = new Fan();
+        Fan lDefaultFan = new Fan();
 
         // Instantiate a Fan with specified parameters 
-        Fan customFan = new Fan(2, true, 8.0, "Blue");
+        Fan lCustomFan = new Fan(2, true, 8.0, "Blue");
 
-        System.out.println(defaultFan.toString()); // Print a message for the default fan's stete.
-        System.out.println(customFan.toString()); // Print a message for the non-default fan's stete.
+        System.out.println(lDefaultFan.toString()); // Print a message for the default fan's stete.
+        System.out.println(lCustomFan.toString()); // Print a message for the non-default fan's stete.
     } // end of main
 } // end of TestFanApp 
