@@ -4,7 +4,7 @@
 eclipse-formatter.xml
 
 *.class
-*.jar
+##*.jar
 *.war
 *.log
 /target/
