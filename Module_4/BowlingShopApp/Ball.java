@@ -1,3 +1,13 @@
+/*
+    Krasso, R., (2021). CIS 505 Intermediate Java Programming. Bellevue University, all
+        rights reserved.
+    Modified by J. Bollman 2022
+
+    Liang, Y.D. (2019). Introduction to Java Programming and Data Structures:
+        Comprehensive Version (12th ed.). Pearson Education, Inc.
+    Modified by J. Bollman 2022
+ */
+
 public class Ball extends Product {
     private String color;
 
@@ -16,10 +26,12 @@ public class Ball extends Product {
     }
 
     public Ball() {
-        color = "";
+        super(); // Call the base Product constructor.
+        setColor("");
     }
 
     public String toString() {
+        // Append the color to the base Product toString result.
         return String.format("%s\n  Color: %s", super.toString(), getColor());
     }
 }
