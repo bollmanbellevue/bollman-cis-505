@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class TestBowlingShopApp {
     public static void main(String[] args) {
+        System.out.println("  Welcome to the Bowling Shop\n");
+
         // Create the scanner object to read the console input.
         Scanner input = new Scanner(System.in);
 
@@ -42,7 +44,7 @@ public class TestBowlingShopApp {
             }
         } while (!exit); // Exit if use selected 'x' menu option.
 
-        System.out.println("  End of line...");
+        System.out.println("\n  End of line...");
         input.close(); // Close the console input reading object.
     }
 

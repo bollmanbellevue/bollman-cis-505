@@ -68,7 +68,7 @@ public class Product {
         //  Product code: X
         //  Description: X
         //  Price: $ X.00
-        return String.format("  Product code: %s\n  Description: %s\n  Price: $ %,6.2f", code,
+        return String.format("  Product code: %s\n  Description: %s\n  Price: $%,6.2f", code,
                 description, price);
     }
 }

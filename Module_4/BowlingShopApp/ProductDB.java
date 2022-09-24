@@ -128,7 +128,7 @@ public class ProductDB {
             Bag bag3 = new Bag();
             bag3.setCode("A300");
             bag3.setDescription("Silver/Royal Blue");
-            bag3.setPrice(54.99);
+            bag3.setPrice(74.99);
             bag3.setType("Triple");
             queue.enqueue(bag3);
 
