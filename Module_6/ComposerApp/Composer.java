@@ -11,24 +11,10 @@ public class Composer {
     }
 
     /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
      * @return the name
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -38,25 +24,23 @@ public class Composer {
         return genre;
     }
 
-    /**
-     * @param genre the genre to set
-     */
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public Composer() {
-        setId(0);
-        setName("");
-        setGenre("");
+        // Set default values.
+        id = 0;
+        name = "";
+        genre = "";
     }
 
     public Composer(int id, String name, String genre) {
-        setId(id);
-        setName(name);
-        setGenre(genre);
+        this.id = id;
+        this.name = name;
+        this.genre = genre;
     }
 
+    /** 
+     * Returns a formatted string with the ID, Name, and Genre.
+     * @return String
+     */
     public String toString() {
         return String.format("  Id: %d\n  Name: %s\n  Genre: %s", id, name, genre);
     }

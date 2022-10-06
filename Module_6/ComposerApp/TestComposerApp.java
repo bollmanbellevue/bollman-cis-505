@@ -1,3 +1,13 @@
+/*
+    Krasso, R., (2022). CIS 505 Intermediate Java Programming. Bellevue University, all
+        rights reserved.
+    Modified by J. Bollman 2022
+
+    Liang, Y.D. (2019). Introduction to Java Programming and Data Structures:
+        Comprehensive Version (12th ed.). Pearson Education, Inc.
+    Modified by J. Bollman 2022
+ */
+
 import java.util.List;
 import java.util.Scanner;
 
