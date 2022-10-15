@@ -14,3 +14,10 @@ Bellevue CIS 505 - Intermediate Java Programming
     - ```jar cf {FileName}.jar *.java```
 3. Run extract jar command 
     - ```jar xf {FileName}.jar```
+
+## Running a JavaFX app
+1. cd to directory
+2. Run compile 
+    - ```javac --module-path ../javafx-sdk-19/lib --add-modules=javafx.controls {FileName}.java```
+3. Run the run command
+    - ```java --module-path ../javafx-sdk-19/lib --add-modules=javafx.controls {EntryClassName}```
