@@ -2,9 +2,10 @@ public class FinanceCalculator {
     private static int MONTHS_IN_YEAR = 12;
 
     /** 
-     * @param monthlyPayment
-     * @param rate
-     * @param years
+     * Calculate the total value of the loan over its life.
+     * @param monthlyPayment - Total monthly payment in dollars
+     * @param rate - The interest rate as a percentage 
+     * @param years - Total years of the loan
      * @return double
      */
     public static double calculateFutureValue(double monthlyPayment, double rate, int years) {

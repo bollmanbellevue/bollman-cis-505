@@ -1,4 +1,7 @@
 /*
+    GeeksforGeeks. (2021, August 20). JavaFX: ComboBox with examples. Retrieved 
+        October 17, 2022, from https://www.geeksforgeeks.org/javafx-combobox-with-examples/ 
+
     Krasso, R., (2022). CIS 505 Intermediate Java Programming. Bellevue University, all
         rights reserved.
 
@@ -39,7 +42,7 @@ public class BollmanEnhancedFutureValueApp extends Application {
     private Label lblYears = new Label("Years:");
     private Label lblFutureValueDate = new Label();
 
-    // Combobox for years
+    // Combobox for years, populated 1 to 10.
     private Integer[] years = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     private ComboBox<Integer> cbYears = new ComboBox<Integer>(
             FXCollections.observableArrayList(years));
@@ -98,9 +101,9 @@ public class BollmanEnhancedFutureValueApp extends Application {
         // Add the button container to the GridPane.
         pane.add(actionBtnContainer, 1, 4);
 
-        // Add the textarea and label
+        // Add the textarea and label, each spans 2 columns
         pane.add(lblFutureValueDate, 0, 5, 2, 1);
-        pane.add(txtResults, 0, 6, 2, 1); // Span the 2 columns.
+        pane.add(txtResults, 0, 6, 2, 1);
 
         // Set the stage title
         primaryStage.setTitle("Bollman Future Value App");
@@ -112,6 +115,9 @@ public class BollmanEnhancedFutureValueApp extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Reset form fields to default values.
+     */
     private void clearFormFields() {
         txtMonthlyPayment.setText("");
         txtInterestRate.setText("");
@@ -120,16 +126,24 @@ public class BollmanEnhancedFutureValueApp extends Application {
         cbYears.setValue(0);
     }
 
+    /**
+     * Get the input from the app form and display the calculated value.
+     */
     private void calculateResults() {
         double monthlyPayment = Double.parseDouble(txtMonthlyPayment.getText());
         double rate = Double.parseDouble(txtInterestRate.getText());
         int years = cbYears.getValue();
         double futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
 
+        // Format and display results.
         lblFutureValueDate.setText("Calculation as of " + getCurrentDate());
         txtResults.setText(String.format("The future value is $%,6.2f", futureValue));
     }
 
+    /**
+     * Get the current date and return as a formatted string.
+     * @return String - formatted date
+     */
     private String getCurrentDate() {
         // Instantiate a date formatting object with date format MM-dd-yyyy
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
