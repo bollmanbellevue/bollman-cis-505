@@ -10,11 +10,8 @@
         https://docs.oracle.com/javafx/2/layout/size_align.htm
 */
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,7 +22,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class BollmanGradeBookApp extends Application {
@@ -54,7 +50,7 @@ public class BollmanGradeBookApp extends Application {
 
     // Buttons for clear and calculate.
     private Button btnClear = new Button("Clear");
-    private Button btnSubmit = new Button("Submit");
+    private Button btnSave = new Button("Save");
     private Button btnViewGrades = new Button("View Grades");
 
     public static void main(String[] args) {
@@ -93,7 +89,7 @@ public class BollmanGradeBookApp extends Application {
 
         // Add button events
         btnClear.setOnAction(e -> clearFormFields());
-        btnSubmit.setOnAction(e -> submitForm());
+        btnSave.setOnAction(e -> submitForm());
 
         // Create a container for the cancel/calculate buttons 
         HBox actionBtnContainer = new HBox();
@@ -101,7 +97,7 @@ public class BollmanGradeBookApp extends Application {
         actionBtnContainer.setPadding(new Insets(15, 0, 15, 30));
         actionBtnContainer.setSpacing(10);
         actionBtnContainer.getChildren().add(btnClear);
-        actionBtnContainer.getChildren().add(btnSubmit);
+        actionBtnContainer.getChildren().add(btnSave);
 
         // Add the button container to the GridPane.
         pane.add(actionBtnContainer, 1, 4);
