@@ -10,6 +10,8 @@
         https://docs.oracle.com/javafx/2/layout/size_align.htm
 */
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -25,6 +27,17 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class BollmanGradeBookApp extends Application {
+    /*
+     * Provide users with a grade book form with labeled fields: 
+    - first name
+    - last name 
+    - course
+    - grade (use A-F, use a ComboBox)
+     * Button to save form.
+     * Button to clear the form.
+     * Button to view saved entries.
+     */
+
     // Components for the First Name.
     private Label lblFirstName = new Label("First Name:");
     private TextField txtFirstName = new TextField();
@@ -44,14 +57,18 @@ public class BollmanGradeBookApp extends Application {
     private ComboBox<String> cbGrades = new ComboBox<String>(
             FXCollections.observableArrayList(grades));
 
+    // Button to save form.
+    private Button btnSave = new Button("Save");
+
+    // Button to clear the form
+    private Button btnClear = new Button("Clear");
+
+    // Button to view saved entries
+    private Button btnViewGrades = new Button("View Grades");
+
     // Components for Displaying Saved Grades.
     private Label lblSavedGrades = new Label("Saved Grades:");
     private TextArea txtSavedGrades = new TextArea();
-
-    // Buttons for clear and calculate.
-    private Button btnClear = new Button("Clear");
-    private Button btnSave = new Button("Save");
-    private Button btnViewGrades = new Button("View Grades");
 
     public static void main(String[] args) {
         // Launch the JavaFX app.
@@ -87,9 +104,11 @@ public class BollmanGradeBookApp extends Application {
         cbGrades.setMaxWidth(Double.MAX_VALUE); // Fill the column.
         pane.add(cbGrades, 1, 3);
 
-        // Add button events
-        btnClear.setOnAction(e -> clearFormFields());
+        // Add form button save
         btnSave.setOnAction(e -> submitForm());
+
+        // Add form button clear
+        btnClear.setOnAction(e -> clearFormFields());
 
         // Create a container for the cancel/calculate buttons 
         HBox actionBtnContainer = new HBox();
@@ -104,7 +123,7 @@ public class BollmanGradeBookApp extends Application {
 
         // Add the saved grades label, button, and textarea
         pane.add(lblSavedGrades, 0, 5);
-        
+
         btnViewGrades.setOnAction(e -> displaySavedGrades());
         HBox viewBtnContainer = new HBox();
         viewBtnContainer.setAlignment(Pos.CENTER_RIGHT);
@@ -128,10 +147,25 @@ public class BollmanGradeBookApp extends Application {
     }
 
     private void submitForm() {
-        // TODO: submit form
+        /* 
+            On form submission
+                - write the entered values to a csv file named grades.csv.
+                - The grades.csv file should have a header row
+                - Values for "firstName, lastName, course, and grade."
+        */
+        try{
+            Student student = new Student(txtFirstName.getText(), txtLastName.getText(), txtCourse.getText(), cbGrades.getValue());
+            StudentIO.insert(student);
+        } catch(IOException ex){
+            // Print the error message to the console.
+            System.out.println("\n  Exception: " + ex.getMessage());
+        }
     }
 
     private void displaySavedGrades() {
-        // TODO: get saved grades and display.
+        /*
+            When a user selects the “view grades’ button
+                - display the contents of the grades.csv file.
+        */
     }
 }
