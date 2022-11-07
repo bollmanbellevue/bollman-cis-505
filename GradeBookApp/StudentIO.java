@@ -1,5 +1,5 @@
 /*
-    Krasso, R., (2021). CIS 505 Intermediate Java Programming. Bellevue University, all
+    Krasso, R., (2022). CIS 505 Intermediate Java Programming. Bellevue University, all
         rights reserved.
     Modified by J. Bollman 2022
  */
@@ -16,8 +16,8 @@ public class StudentIO {
     private static File file = new File(FILE_NAME);
 
     /** 
-     * Add transactions (fields are space delimited) to a file. Creates a file if it does not exist.
-     * @param transactions - List of transactions to add.
+     * Add a student (fields are comma delimited) to a file. Creates a file if it does not exist.
+     * @param student - A student to add.
      * @throws IOException - May throw an exception if there is an issue with file Read/Write.
      */
     public static void insert(Student student) throws IOException {
@@ -27,7 +27,7 @@ public class StudentIO {
         */
         PrintWriter writer = getFilePrintWriter();
 
-        // Write each transaction to a line with space delimited fields.
+        // Write a student record, comma delimited.
         String csvRecord = String.format("%s,%s,%s,%s", student.getFirstName(),
                 student.getLastName(), student.getCourse(), student.getGrade());
         writer.println(csvRecord);
@@ -68,18 +68,20 @@ public class StudentIO {
         // Instantiate a scanner with a File as the source. 
         Scanner input = new Scanner(file);
 
-        // Create an empty ArrayList to add transactions to.
+        // Create an empty ArrayList to add students to.
         ArrayList<Student> students = new ArrayList<>();
 
         // Read the file until there aren't any more records.
         boolean isHeader = true;
         while (input.hasNext()) {
             if (isHeader) {
+                input.nextLine();
+                isHeader = false;
                 continue;
             }
 
             String line = input.nextLine();
-            // The transaction information is space delimited.
+            // The student information is comma delimited.
             String[] record = line.split(",");
 
             /*
@@ -90,9 +92,11 @@ public class StudentIO {
                 [3] grade
              */
 
-            // Instantiate new transaction with file information and add to transaction list.
-            Student student = new Student(record[0], record[1], record[2], record[3]);
-            students.add(student);
+            // Instantiate new student with file information and add to student list.
+            if(record.length > 0){
+                Student student = new Student(record[0], record[1], record[2], record[3]);
+                students.add(student);
+            }
         }
 
         // Close the scanner.

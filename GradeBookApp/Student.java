@@ -84,6 +84,7 @@ public class Student {
     }
 
     public String toString() {
-        return String.format("Name: %s, %s\nCourse: %s\nLetter Grade: %s", lastName, firstName, course, grade);
+        return String.format("Name: %s, %s\nCourse: %s\nLetter Grade: %s", lastName, firstName,
+                course, grade);
     }
 }

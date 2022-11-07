@@ -1,17 +1,20 @@
 /*
     GeeksforGeeks. (2021, August 20). JavaFX: ComboBox with examples. Retrieved 
-        October 17, 2022, from https://www.geeksforgeeks.org/javafx-combobox-with-examples/ 
+        October 17, 2022, from https://www.geeksforgeeks.org/javafx-combobox-with-examples/
+    Modified by J. Bollman 2022
 
     Krasso, R., (2022). CIS 505 Intermediate Java Programming. Bellevue University, all
         rights reserved.
+    Modified by J. Bollman 2022
 
     Oracle. (2013, April 24). Working With Layouts in JavaFX: Tips for Sizing and 
         Aligning Nodes. Retrieved October 14, 2022, from 
         https://docs.oracle.com/javafx/2/layout/size_align.htm
+    Modified by J. Bollman 2022
 */
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -143,7 +146,11 @@ public class BollmanGradeBookApp extends Application {
     }
 
     private void clearFormFields() {
-        // TODO: clear form
+        // Reset the form to the default values
+        txtFirstName.clear();
+        txtLastName.clear();
+        txtCourse.clear();
+        cbGrades.setValue("");
     }
 
     private void submitForm() {
@@ -153,19 +160,43 @@ public class BollmanGradeBookApp extends Application {
                 - The grades.csv file should have a header row
                 - Values for "firstName, lastName, course, and grade."
         */
-        try{
-            Student student = new Student(txtFirstName.getText(), txtLastName.getText(), txtCourse.getText(), cbGrades.getValue());
+        try {
+            // Instantiate a Student object using the form fields.
+            Student student = new Student(txtFirstName.getText(), txtLastName.getText(),
+                    txtCourse.getText(), cbGrades.getValue());
+
+            // Add the student to the records. 
             StudentIO.insert(student);
-        } catch(IOException ex){
+
+            // Clear the fields after the record is successfully added.
+            clearFormFields();
+        } catch (IOException ex) {
             // Print the error message to the console.
             System.out.println("\n  Exception: " + ex.getMessage());
         }
     }
 
+    // Read the stored student records and display them on the screen.
     private void displaySavedGrades() {
         /*
             When a user selects the “view grades’ button
                 - display the contents of the grades.csv file.
         */
+        try {
+            // Get all the student records.
+            ArrayList<Student> students = StudentIO.findAll();
+
+            // Create the text to display.
+            String gradeDisplay = "";
+            for (Student student : students) {
+                gradeDisplay += student.toString() + "\n\n";
+            }
+
+            // Add the text to the screen
+            txtSavedGrades.setText(gradeDisplay);
+        } catch (IOException ex) {
+            // Print the error message to the console.
+            System.out.println("\n  Exception: " + ex.getMessage());
+        }
     }
 }
