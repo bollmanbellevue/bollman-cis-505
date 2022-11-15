@@ -43,22 +43,22 @@ public class BollmanGradeBookApp extends Application {
 
     // Components for the First Name.
     private Label lblFirstName = new Label("First Name:");
-    private TextField txtFirstName = new TextField();
+    private TextField txtFirstName = new TextField("");
 
     // Components for the Last Name.
     private Label lblLastName = new Label("Last Name:");
-    private TextField txtLastName = new TextField();
+    private TextField txtLastName = new TextField("");
 
     // Components for the Course Name.
     private Label lblCourse = new Label("Course:");
-    private TextField txtCourse = new TextField();
+    private TextField txtCourse = new TextField("");
 
     // Components for the Grade.
     private Label lblGrades = new Label("Grade:");
 
     private String[] grades = { "A", "B", "C", "D", "F" };
-    private ComboBox<String> cbGrades = new ComboBox<String>(
-            FXCollections.observableArrayList(grades));
+    private ComboBox<String> cbGrades = new ComboBox<>(
+        FXCollections.observableArrayList(grades));
 
     // Button to save form.
     private Button btnSave = new Button("Save");
@@ -105,6 +105,7 @@ public class BollmanGradeBookApp extends Application {
         // Add the grades label and combobox
         pane.add(lblGrades, 0, 3);
         cbGrades.setMaxWidth(Double.MAX_VALUE); // Fill the column.
+        cbGrades.setValue("");
         pane.add(cbGrades, 1, 3);
 
         // Add form button save
@@ -161,15 +162,18 @@ public class BollmanGradeBookApp extends Application {
                 - Values for "firstName, lastName, course, and grade."
         */
         try {
-            // Instantiate a Student object using the form fields.
-            Student student = new Student(txtFirstName.getText(), txtLastName.getText(),
-                    txtCourse.getText(), cbGrades.getValue());
+            // Instantiate a Student object using the form fields if they are not empty.
+            if (!txtFirstName.getText().isEmpty() && !txtLastName.getText().isEmpty()
+                    && !txtCourse.getText().isEmpty() && !cbGrades.getValue().isEmpty()) {
+                Student student = new Student(txtFirstName.getText(), txtLastName.getText(),
+                        txtCourse.getText(), cbGrades.getValue());
 
-            // Add the student to the records. 
-            StudentIO.insert(student);
+                // Add the student to the records. 
+                StudentIO.insert(student);
 
-            // Clear the fields after the record is successfully added.
-            clearFormFields();
+                // Clear the fields after the record is successfully added.
+                clearFormFields();
+            }
         } catch (IOException ex) {
             // Print the error message to the console.
             System.out.println("\n  Exception: " + ex.getMessage());
